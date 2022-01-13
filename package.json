@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel app.js -d dist",
+    "start": "npm run build && nodemon app.js"
   },
   "repository": {
     "type": "git",
