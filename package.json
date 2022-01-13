@@ -1,0 +1,39 @@
+{
+  "name": "booking-rest-api",
+  "version": "1.0.0",
+  "description": "👉 A resful api that allows users to login as administrator or user (user / owner).",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benkrakar/Booking-REST-API.git"
+  },
+  "author": "B3NKR4K4R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benkrakar/Booking-REST-API/issues"
+  },
+  "homepage": "https://github.com/Benkrakar/Booking-REST-API#readme",
+  "dependencies": {
+    "dotenv": "^11.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^5.13.14",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "prettier": "^2.5.1"
+  }
+}
