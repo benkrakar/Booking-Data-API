@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "👉 A resful api that allows users to login as administrator or user (user / owner).",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
