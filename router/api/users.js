@@ -1,4 +1,4 @@
-import UsersController from '../../controllers/api/auth-controller.js';
+import UsersController from '../../controllers/api/users-controller.js';
 
 export default {
   group: {
@@ -20,7 +20,6 @@ export default {
       path: '/:id',
       handler: UsersController.getUser,
     },
-
     {
       method: 'put',
       path: '/:id',
