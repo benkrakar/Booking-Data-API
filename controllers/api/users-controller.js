@@ -78,7 +78,21 @@ class UsersController {
   }
 
   async deleteUser(req, res) {
-    console.log('hi from controller 👋👋');
+    try {
+      const users = await models.users.findByIdAndDelete(req.params.id);
+
+      res.status(202).json({
+        status: 'success',
+        data: {
+          users,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
   }
 }
 
