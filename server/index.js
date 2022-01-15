@@ -10,6 +10,8 @@ class Server {
     this.mongoose = Mongoose;
     this.db = process.env.DATABASE_LOCAL;
     this.app = express();
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
   }
 
   start() {
