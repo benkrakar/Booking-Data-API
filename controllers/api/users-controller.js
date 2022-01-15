@@ -53,7 +53,28 @@ class UsersController {
   }
 
   async updateUser(req, res) {
-    console.log('hi from controller 👋👋');
+    try {
+      const users = await models.users.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+
+      res.status(202).json({
+        status: 'success',
+        data: {
+          users,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
   }
 
   async deleteUser(req, res) {
