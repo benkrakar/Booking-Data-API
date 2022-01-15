@@ -6,7 +6,20 @@ class UsersController {
   }
 
   async getUsers(req, res) {
-    console.log('hi from controller 👋👋');
+    try {
+      const users = await models.users.find();
+      res.status(202).json({
+        status: 'success',
+        data: {
+          users,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
   }
 
   async createUser(req, res) {
