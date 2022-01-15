@@ -2,7 +2,20 @@ import models from '../../models/index.js';
 
 class UsersController {
   async getUser(req, res) {
-    console.log('hi from controller 👋👋');
+    try {
+      const users = await models.users.findById(req.params.id);
+      res.status(202).json({
+        status: 'success',
+        data: {
+          users,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
   }
 
   async getUsers(req, res) {
