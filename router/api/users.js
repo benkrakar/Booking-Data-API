@@ -1,3 +1,5 @@
+import UsersController from '../../controllers/api/auth-controller.js';
+
 export default {
   group: {
     prefix: '/users',
@@ -6,16 +8,28 @@ export default {
     {
       method: 'get',
       path: '/',
-      handler: (req, res) => {
-        res.send('Home page.');
-      },
+      handler: UsersController.getUsers,
     },
     {
       method: 'post',
       path: '/',
-      handler: (req, res) => {
-        res.send(`Create page.`);
-      },
+      handler: UsersController.createUser,
+    },
+    {
+      method: 'get',
+      path: '/:id',
+      handler: UsersController.getUser,
+    },
+
+    {
+      method: 'put',
+      path: '/:id',
+      handler: UsersController.updateUser,
+    },
+    {
+      method: 'delete',
+      path: '/:id',
+      handler: UsersController.deleteUser,
     },
   ],
 };
