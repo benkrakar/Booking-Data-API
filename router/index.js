@@ -15,16 +15,19 @@ class Router {
     app.use(this.router);
   }
 
-  _catchError(route) {
+  _catchError(handler) {
     return (req, res, next) => {
-      route(req, res, next).catch(next);
+      handler(req, res, next).catch(next);
     };
   }
 
   _handleExceptions() {
     this.router.use((err, req, res, next) => {
       err.statusCode = err.status || err.statusCode || 500;
-      return res.status(err.statusCode).send(err.message);
+      return res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
+      });
     });
   }
 

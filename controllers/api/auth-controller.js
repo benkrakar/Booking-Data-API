@@ -7,7 +7,8 @@ class AuthController {
 
     const user = await models.users.findOne({ email }).select('+password');
     if (!user) throw new AppException('invalid mail', 403);
-    if (password !== user.password) throw new AppException();
+    if (password !== user.password)
+      throw new AppException('incorrect password', 403);
     res.send(user);
   }
 
