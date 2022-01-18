@@ -8,9 +8,15 @@ class Router {
   }
 
   create(app) {
+    this._attachMiddleware();
     this._attachApiRoutes();
     this._handlePageNotFound();
     app.use(this.router);
+  }
+
+  _attachMiddleware() {
+    this.router.use(express.json());
+    this.router.use(express.urlencoded({ extended: false }));
   }
 
   _handlePageNotFound() {
