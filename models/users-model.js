@@ -18,17 +18,6 @@ const usersShema = (mongoose) =>
       required: [true, 'user must have a password'],
       minlength: 8,
     },
-    passwordConfirm: {
-      type: String,
-      required: [true, 'please confirm your password'],
-      minlength: 8,
-      validate: {
-        validator: function (pwd) {
-          return pwd === this.password;
-        },
-        messages: 'Passwords do not match!',
-      },
-    },
     role: {
       type: String,
       required: false,
