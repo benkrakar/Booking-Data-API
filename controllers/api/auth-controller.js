@@ -1,13 +1,13 @@
 import models from '../../models/index.js';
-import InvalidCredentialException from '../../exceptions/invalid-credential-exception.js';
+import AppException from '../../exceptions/AppException.js';
 
 class AuthController {
   async login(req, res) {
     const { email, password } = req.body;
 
     const user = await models.users.findOne({ email }).select('+password');
-    if (!user) throw new InvalidCredentialException('invalid mail', 400);
-    if (password !== user.password) throw new InvalidCredentialException();
+    if (!user) throw new AppException('invalid mail', 403);
+    if (password !== user.password) throw new AppException();
     res.send(user);
   }
 
