@@ -1,6 +1,4 @@
 import Server from './server/index.js';
 
-const port = 8080;
-
-const app = new Server(port);
+const app = new Server();
 app.start();

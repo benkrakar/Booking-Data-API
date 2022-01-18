@@ -1,39 +1,21 @@
 import express from 'express';
-import Mongoose from 'mongoose';
 import 'dotenv/config';
 import Router from '../router/index.js';
 
 class Server {
-  constructor(port) {
-    this.port = port;
+  constructor() {
     this.router = Router;
-    this.mongoose = Mongoose;
-    this.db = process.env.DATABASE_LOCAL;
+    this.port = process.env.PORT;
     this.app = express();
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: false }));
   }
 
   start() {
     this._setupRoutes();
-    this._setupConnection();
     this._listen();
   }
 
   _setupRoutes() {
     this.router.create(this.app);
-  }
-
-  _setupConnection() {
-    this.mongoose
-      .connect(this.db, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
-      })
-      .then(() => {
-        console.log('connection 👌');
-      });
   }
 
   _listen() {
