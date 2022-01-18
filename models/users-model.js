@@ -17,6 +17,7 @@ const usersShema = (mongoose) =>
       type: String,
       required: [true, 'user must have a password'],
       minlength: 8,
+      select: false,
     },
     role: {
       type: String,

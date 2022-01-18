@@ -1,11 +1,8 @@
-const BaseException = require('./base-exception')
+import BaseException from './base-exception.js';
 
 class InvalidCredentialException extends BaseException {
-
-    constructor(message = 'Invalid login credentials!', status = 403) {
-        super(message, status)
-    }
-
+  constructor(message = 'Invalid login credentials!', status = 403) {
+    super(message, status);
+  }
 }
-
-module.exports = InvalidCredentialException
+export default InvalidCredentialException;

@@ -1,8 +1,14 @@
 import models from '../../models/index.js';
+import InvalidCredentialException from '../../exceptions/invalid-credential-exception.js';
 
 class AuthController {
   async login(req, res) {
-    console.log('hi from controller 👋👋');
+    const { email, password } = req.body;
+
+    const user = await models.users.findOne({ email }).select('+password');
+    if (!user) throw new InvalidCredentialException('invalid mail', 400);
+    if (password !== user.password) throw new InvalidCredentialException();
+    res.send(user);
   }
 
   async register(req, res) {
