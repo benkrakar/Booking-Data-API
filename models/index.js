@@ -15,6 +15,6 @@ mongoose
   });
 
 const models = {};
-models.users = mongoose.model('Users', usersShema(mongoose));
+models.users = mongoose.model('Users', usersShema);
 
 export default models;
