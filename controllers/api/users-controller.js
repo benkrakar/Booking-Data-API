@@ -1,4 +1,5 @@
 import models from '../../models/index.js';
+import AppException from '../../exceptions/AppException.js';
 
 class UsersController {
   async getUser(req, res) {
@@ -11,10 +12,7 @@ class UsersController {
         },
       });
     } catch (err) {
-      res.status(400).json({
-        status: 'fail',
-        message: err,
-      });
+      throw new AppException(err, 400);
     }
   }
 
@@ -28,10 +26,7 @@ class UsersController {
         },
       });
     } catch (err) {
-      res.status(400).json({
-        status: 'fail',
-        message: err,
-      });
+      throw new AppException(err, 400);
     }
   }
 
@@ -45,10 +40,7 @@ class UsersController {
         },
       });
     } catch (err) {
-      res.status(400).json({
-        status: 'fail',
-        message: err,
-      });
+      throw new AppException(err, 400);
     }
   }
 
@@ -70,10 +62,7 @@ class UsersController {
         },
       });
     } catch (err) {
-      res.status(400).json({
-        status: 'fail',
-        message: err,
-      });
+      throw new AppException(err, 400);
     }
   }
 
@@ -88,10 +77,7 @@ class UsersController {
         },
       });
     } catch (err) {
-      res.status(400).json({
-        status: 'fail',
-        message: err,
-      });
+      throw new AppException(err, 400);
     }
   }
 }
