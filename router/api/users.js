@@ -1,4 +1,4 @@
-import UsersController from '../../controllers/api/users-controller.js';
+import UsersController from '../../app/controllers/api/users-controller.js';
 
 export default {
   group: {

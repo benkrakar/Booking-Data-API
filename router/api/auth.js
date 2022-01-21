@@ -1,4 +1,4 @@
-import AuthController from '../../controllers/api/auth-controller.js';
+import AuthController from '../../app/controllers/api/auth-controller.js';
 
 export default {
   group: {

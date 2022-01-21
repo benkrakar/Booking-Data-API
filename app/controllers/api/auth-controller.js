@@ -1,15 +1,23 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
+import AuthService from '../../services/auth-service.js';
 
 class AuthController {
   async login(req, res) {
     const { email, password } = req.body;
 
     const user = await models.users.findOne({ email }).select('+password');
+
     if (!user) throw new AppException('invalid mail', 403);
-    if (password !== user.password)
+
+    if (!(await AuthService.isPasswordMatch(password, user.password)))
       throw new AppException('incorrect password', 403);
-    res.send(user);
+
+    const payload = { id: user.id, email: user.email, name: user.name };
+    // const key = await crypto.randomBytes(64).toString('hex');
+    const accessToken = await AuthService.generateToken(payload);
+
+    res.send({ user, accessToken });
   }
 
   async register(req, res) {
