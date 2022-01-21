@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import Tokenizer from '../modules/tokenizer/index.js';
 
 class AuthService {
   async isPasswordMatch(password, original) {
@@ -7,9 +7,10 @@ class AuthService {
   }
 
   async generateToken(payload) {
-    return jwt.sign(payload, process.env.APP_KEY, {
-      expiresIn: process.env.TOKEN_EXPIRATION,
-    });
+    return {
+      accessToken: Tokenizer.generateAccessToken(payload),
+      // refreshToken: Tokenizer.generateRefreshToken(),
+    };
   }
 }
 export default new AuthService();

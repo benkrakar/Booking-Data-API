@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import usersShema from './users-model.js';
+import productsShema from './products-model.js';
 
 const db = process.env.DATABASE_LOCAL;
 
@@ -15,6 +16,7 @@ mongoose
   });
 
 const models = {};
+models.products = mongoose.model('Products', productsShema);
 models.users = mongoose.model('Users', usersShema);
 
 export default models;

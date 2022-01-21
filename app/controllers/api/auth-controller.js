@@ -14,10 +14,9 @@ class AuthController {
       throw new AppException('incorrect password', 403);
 
     const payload = { id: user.id, email: user.email, name: user.name };
-    // const key = await crypto.randomBytes(64).toString('hex');
-    const accessToken = await AuthService.generateToken(payload);
+    const token = await AuthService.generateToken(payload);
 
-    res.send({ user, accessToken });
+    res.send(token);
   }
 
   async register(req, res) {
