@@ -14,7 +14,15 @@ const auth = async (req, res, next) => {
     if (err) return next(new AppException(err, 401));
 
     try {
-      const authUser = await models.users.findOne({ user });
+      const authUser = await models.users.findById(user.id);
+      if (!authUser) {
+        return next(
+          new AppException(
+            'The user belonging to this token does no longer exist',
+            401
+          )
+        );
+      }
       req.user = authUser;
       next();
     } catch (e) {
