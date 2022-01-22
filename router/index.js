@@ -51,7 +51,7 @@ class Router {
       routes.forEach(({ method, path, middlewares = [], handler }) => {
         this.router[method](
           prefix + group.prefix + path,
-          [...middlewares],
+          [...(group.middlewares || []), ...middlewares],
           this._catchError(handler)
         );
       });

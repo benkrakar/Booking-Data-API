@@ -9,12 +9,12 @@ export default {
     {
       method: 'get',
       path: '/',
-      middlewares: [auth],
       handler: ProductsController.getProducts,
     },
     {
       method: 'post',
       path: '/',
+      middlewares: [auth],
       handler: ProductsController.createProduct,
     },
     {
@@ -25,10 +25,12 @@ export default {
     {
       method: 'put',
       path: '/:id',
+      middlewares: [auth],
       handler: ProductsController.updateProduct,
     },
     {
       method: 'delete',
+      middlewares: [auth],
       path: '/:id',
       handler: ProductsController.deleteProduct,
     },

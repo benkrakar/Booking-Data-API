@@ -1,8 +1,10 @@
 import UsersController from '../../app/controllers/api/users-controller.js';
+import auth from '../../app/middlewares/auth.js';
 
 export default {
   group: {
     prefix: '/users',
+    middlewares: [auth],
   },
   routes: [
     {
