@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import models from '../models/index.js';
-
+import AuthService from '../services/auth-service.js';
 import AppException from '../exceptions/AppException.js';
 
 const auth = async (req, res, next) => {
@@ -22,6 +22,20 @@ const auth = async (req, res, next) => {
             401
           )
         );
+      }
+      if (authUser.passwordChangedAt) {
+        if (
+          await AuthService.changedPasswordAfter(
+            authUser.passwordChangedAt,
+            user.iat
+          )
+        )
+          return next(
+            new AppException(
+              'User recently changed password! Pmease login again :)',
+              401
+            )
+          );
       }
       req.user = authUser;
       next();
