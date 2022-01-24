@@ -1,5 +1,5 @@
 import ProductsController from '../../app/controllers/api/products-controller.js';
-import auth from '../../app/middlewares/auth.js';
+import auth from '../../app/middlewares/authentification.js';
 
 export default {
   group: {

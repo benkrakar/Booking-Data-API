@@ -24,6 +24,7 @@ const usersShema = new mongoose.Schema({
     type: String,
     required: false,
     default: 'user',
+    enum: ['user', 'admin'],
   },
   created_at: {
     type: Date,

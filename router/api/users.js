@@ -1,10 +1,16 @@
 import UsersController from '../../app/controllers/api/users-controller.js';
-import auth from '../../app/middlewares/auth.js';
+import auth from '../../app/middlewares/authentification.js';
+import authrization from '../../app/middlewares/authorization.js';
 
 export default {
   group: {
     prefix: '/users',
-    middlewares: [auth],
+    middlewares: [
+      auth,
+      function (req, res, next) {
+        authrization(req, res, next, 'admin');
+      },
+    ],
   },
   routes: [
     {
