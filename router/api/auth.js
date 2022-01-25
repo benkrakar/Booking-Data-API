@@ -15,5 +15,15 @@ export default {
       path: '/register',
       handler: AuthController.register,
     },
+    {
+      method: 'post',
+      path: '/forgetPassword',
+      handler: AuthController.forgetPassword,
+    },
+    {
+      method: 'post',
+      path: '/register',
+      handler: AuthController.resetPassword,
+    },
   ],
 };

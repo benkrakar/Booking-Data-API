@@ -8,8 +8,12 @@ class Tokenizer {
     });
   }
 
-  generateRefreshToken(lenght = 40) {
+  generateRandomToken(lenght = 40) {
     return crypto.randomBytes(lenght).toString('hex');
+  }
+
+  generateHashedToken(resetToken) {
+    return crypto.createHash('sha256').update(resetToken).digest('hex');
   }
 }
 export default new Tokenizer();

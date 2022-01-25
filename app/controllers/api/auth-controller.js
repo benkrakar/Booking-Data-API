@@ -35,6 +35,17 @@ class AuthController {
       });
     }
   }
+
+  async forgetPassword(req, res) {
+    const user = await models.users.findOne({ email: req.body.email });
+    if (!user) throw new AppException('No user with this email!', 403);
+    const resetToken = await AuthService.generatePasswordResetToken();
+    user.passwordResetToken = await AuthService.hashPasswordResetToken(
+      resetToken
+    );
+    user.passwordResetExpires = await AuthService.ResetExpiresToken();
+    await user.save();
+  }
 }
 
 export default new AuthController();

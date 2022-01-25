@@ -17,5 +17,17 @@ class AuthService {
       // refreshToken: Tokenizer.generateRefreshToken(),
     };
   }
+
+  async generatePasswordResetToken() {
+    return Tokenizer.generateRandomToken();
+  }
+
+  async hashPasswordResetToken(resetToken) {
+    return Tokenizer.generateHashedToken(resetToken);
+  }
+
+  async ResetExpiresToken() {
+    return Date.now() + 10 * 60 * 1000;
+  }
 }
 export default new AuthService();
